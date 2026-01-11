@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2D Game UI</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="top-bar">
+      <div class="brand">Nebula Runner</div>
+      <div class="top-actions">
+        <button class="btn primary" type="button" onclick="onStart()">Start</button>
+        <button class="btn" type="button" onclick="onPause()">Pause</button>
+        <button class="btn" type="button" onclick="onRestart()">Restart</button>
+        <button class="btn ghost" type="button" id="openSettings" aria-haspopup="dialog">Settings</button>
+      </div>
+    </header>
+
+    <main class="game-shell">
+      <section class="hud" aria-label="Game status">
+        <div class="stat">
+          <span class="label">Score</span>
+          <span class="value" id="scoreValue">12,450</span>
+        </div>
+        <div class="stat">
+          <span class="label">High Score</span>
+          <span class="value" id="highScoreValue">28,900</span>
+        </div>
+        <div class="stat">
+          <span class="label">Timer</span>
+          <span class="value" id="timerValue">02:13</span>
+        </div>
+        <div class="health" aria-label="Health">
+          <span class="label">Health</span>
+          <div class="health-bar" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">
+            <div class="health-fill" style="width: 72%"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="game-area" aria-label="Game canvas">
+        <div class="game-placeholder">
+          <div class="scanline"></div>
+          <p>Game scene placeholder</p>
+          <span>Focus the window and use arrow keys to move.</span>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop hidden" id="settingsBackdrop" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+    <div class="modal">
+      <header>
+        <h2 id="settingsTitle">Settings</h2>
+        <button class="icon-btn" type="button" aria-label="Close settings" id="closeSettings">✕</button>
+      </header>
+      <div class="modal-content">
+        <label class="slider">
+          <span>Volume</span>
+          <input type="range" min="0" max="100" value="65" aria-label="Volume" />
+        </label>
+        <div class="keybinds">
+          <h3>Keybinds</h3>
+          <ul>
+            <li><span>Move</span><kbd>←</kbd><kbd>→</kbd><kbd>↑</kbd><kbd>↓</kbd></li>
+            <li><span>Dash</span><kbd>Shift</kbd></li>
+            <li><span>Pause</span><kbd>P</kbd></li>
+            <li><span>Restart</span><kbd>R</kbd></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="game-over hidden" id="gameOver" role="dialog" aria-modal="true" aria-labelledby="gameOverTitle">
+    <div class="game-over-card">
+      <h2 id="gameOverTitle">Game Over</h2>
+      <p>Nice run, pilot. Ready for another flight?</p>
+      <button class="btn primary" type="button" onclick="onPlayAgain()">Play again</button>
+    </div>
+  </div>
+
+  <script>
+    const settingsBackdrop = document.getElementById('settingsBackdrop');
+    const openSettings = document.getElementById('openSettings');
+    const closeSettings = document.getElementById('closeSettings');
+
+    openSettings.addEventListener('click', () => settingsBackdrop.classList.remove('hidden'));
+    closeSettings.addEventListener('click', () => settingsBackdrop.classList.add('hidden'));
+    settingsBackdrop.addEventListener('click', (event) => {
+      if (event.target === settingsBackdrop) {
+        settingsBackdrop.classList.add('hidden');
+      }
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        settingsBackdrop.classList.add('hidden');
+      }
+    });
+
+    function onStart() {}
+    function onPause() {}
+    function onRestart() {}
+    function onPlayAgain() {}
+  </script>
+</body>
+</html>
