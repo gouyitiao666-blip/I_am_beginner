@@ -2,52 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Game UI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- this must match your CSS filename -->
+  <title>Aurora Scholars</title>
   <link rel="stylesheet" href="./style.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@18.2.0",
+        "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+        "react-router-dom": "https://esm.sh/react-router-dom@6.22.3"
+      }
+    }
+  </script>
 </head>
-
 <body>
-  <div class="app">
-    <div class="top-bar">
-      <div class="brand">MY GAME</div>
-      <div class="top-actions">
-        <button class="btn primary">Start</button>
-        <button class="btn ghost">Pause</button>
-        <button class="btn ghost">Settings</button>
-      </div>
-    </div>
-
-    <div class="game-shell">
-      <div class="hud">
-        <div class="stat">
-          <span class="label">Score</span>
-          <span class="value">0000</span>
-        </div>
-
-        <div class="stat">
-          <span class="label">Time</span>
-          <span class="value">00:00</span>
-        </div>
-
-        <div class="health">
-          <span class="label">Health</span>
-          <div class="health-bar">
-            <div class="health-fill" style="width: 80%"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="game-area">
-        <div class="game-placeholder">
-          <p>Game Canvas</p>
-          <span>Your game goes here</span>
-          <div class="scanline"></div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>
